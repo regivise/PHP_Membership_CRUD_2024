@@ -32,9 +32,13 @@ if(isset($_POST['update_student'])){
             $id_new = $_GET['id_new'];
     }
 
-$first_name= $_POST['first_name'];
-$last_name= $_POST['last_name'];
-$age =$_POST['age'];
+$first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
+$age = $_POST['age'];
+
+$first_name = mysqli_real_escape_string($conn,$first_name);
+$last_name = mysqli_real_escape_string($conn,$last_name);
+$age = mysqli_real_escape_string($conn,$age);
 
 $query="UPDATE students SET first_name='$first_name', last_name='$last_name', age = '$age' WHERE id = $id_new";
 $result = mysqli_query($conn,$query);
